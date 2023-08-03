@@ -1,0 +1,181 @@
+
+$(function(){
+	
+
+
+	 $.fn.extend({ 
+
+        addTemporaryClass: function(className, duration) {
+            var elements = this;
+            setTimeout(function() {
+                elements.removeClass(className);
+            }, duration);
+
+            return this.each(function() {
+                $(this).addClass(className);
+            });
+        }
+    });
+
+	 // Menu Animation 
+
+	 $(".burger-nav").click(function(){
+
+	 	if($(this).hasClass("closed")) {
+
+	 		$(".burger-nav").removeClass("closed");
+			$(".burger-nav").addTemporaryClass("animate-open", 300).addClass("open");
+
+			 }
+		else if($(this).hasClass("open")) {
+
+			$(".burger-nav").removeClass("open")
+			$(".burger-nav").addTemporaryClass("animate-close", 300).addClass("closed");
+
+		}
+
+		$(".drawer-cont").toggleClass("open");
+
+
+	 });
+
+
+	 $(".drawer-overlay").click(function(){
+
+
+	 	$(".drawer-cont").toggleClass("open");
+
+	 });
+
+	 $(".accordion-button").click(function(){
+
+	 	$(this).closest(".accordion").toggleClass("expanded");
+
+	 });
+
+	 $(".search-mobile .search-ic").click(function(){
+
+
+	 	$(".search-ovl-cont").toggleClass("open");
+
+	 });
+
+
+	 $(".search-ovl-cont .close-btn").click(function(){
+
+	 	$(".search-ovl-cont").removeClass("open");
+
+	 });
+
+
+
+	 // Menu Item going up one level
+
+	 $("#featured-drink").click(function(){
+
+
+	 	$(".level1").hide();
+	 	$(".level2").css('display','flex');
+
+	 });
+
+
+	  // Menu Item going down one level
+
+	 $("#back-to-menu").click(function(){
+
+
+	 	$(".level2").hide();
+	 	$(".level1").css('display','flex');
+
+	 });
+
+	  // displaying modal for menu item and promo banner
+
+	  $("#blonde-roast, #promo-link").click(function(){
+
+
+	 	$(".item-modal:not(#cookiePrompt)").toggleClass("open");
+
+	 });
+
+	   $(".item-modal .close-btn, .item-modal .item-overlay").click(function(){
+
+	 	$(".item-modal").removeClass("open");
+
+	 });
+
+	   // tool tip for menu item (i) icon
+
+	   $(".ic-info").click(function(){
+	   	$(".info-button").toggleClass("open");
+	   });
+
+	   $(".info-button span.close-btn-mini").click(function(){
+
+	   		$(".info-button").removeClass("open");
+
+	   });
+
+
+	    // search item details
+
+	   $(".search-item .info-btn").click(function(){
+	   	$(".store-details").toggleClass("open");
+	   });
+
+
+	   $(".store-details span.close-btn").click(function(){
+	   	$(".store-details").toggleClass("open");
+	   });
+
+
+  $("#filter-store-btn").click(function(){
+	   	$(".filter-modal").toggleClass("open");
+	   });
+
+
+	   $(".filter-modal span.close-btn").click(function(){
+	   	$(".filter-modal").toggleClass("open");
+	   });
+
+	   $(".filter-modal .icon-item").click(function(){
+	   	
+	   	$(this).toggleClass("active-filter");
+
+	   });
+
+
+	   function repositionStoreSearch() {
+
+	    if (window.matchMedia('(max-width: 991px)').matches) {
+	       $(".map-cont").prepend($(".search-wrapper"));
+	       $(".find-store-wrapper").prepend($(".filter-modal"));
+	        $(".find-store-wrapper").prepend($(".store-details"));
+	        $(".map-search").css({"height" : "300px"});
+
+	    } else {
+	    	  $(".map-search").css({"height" : "100%"});
+	        $(".map-search").prepend($(".search-wrapper"));
+	        $(".map-search").prepend($(".store-details"));
+	        $(".map-search").prepend($(".filter-modal"));
+
+	    }
+	}	
+
+	window.addEventListener('load', repositionStoreSearch );
+	window.addEventListener('refresh', repositionStoreSearch );
+	window.addEventListener('resize', repositionStoreSearch );
+
+
+  $('.grab-slider').slick({
+    fade:true,
+    dots:true,
+    autoplay:true,
+    autoplaySpeed:5000
+  });
+
+ 
+
+
+});

@@ -1,0 +1,21 @@
+//Cookie Compliancy BEGIN
+
+function testFirstCookie(){
+ 	$.ajax({url: base_url+"/gcc", success: function(result){
+	   if(!result || result.trim() == '')  {
+	   	    // $("#cookiePrompt").fadeIn(200);	// Show warning
+           $("#cookiePrompt").toggleClass("open");
+	 	}
+	}});
+}
+
+$(document).ready(function(){
+    $("#cookieButton").click(function(){
+		$.ajax({url: base_url+"/ccc", success: function(result){
+	    	//$("#cookiePrompt").hide(200);
+	  	}});
+    });
+	testFirstCookie();
+});
+
+// Cookie Compliancy END

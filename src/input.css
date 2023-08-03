@@ -1,0 +1,35 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container{
+    max-width: 90rem;
+    margin: 0 auto;
+    padding: 1rem;                                                                                                                                                                                        
+}
+
+@layer components{
+
+    .starbs{
+        @apply bg-cream w-full h-[4.4rem] lg:h-[5rem] drop-shadow-lg
+    }
+    
+    .starbs .starbs__wrapper{
+        @apply  w-full items-center
+
+    }
+    .starbs .starbs__item{
+        @apply  flex justify-between lg:justify-normal
+    }
+
+    .starbsgirl {
+        @apply  w-[2.2rem] lg:w-[3rem]
+    }
+    .starbs .starbs__text{
+        @apply hidden lg:flex font-bold items-center pl-[3rem]
+    }
+    
+    .toggle__menu{
+        @apply p-[.5rem] space-y-[.3rem] max-w-[5rem] lg:hidden
+    }
+}
