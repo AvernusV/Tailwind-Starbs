@@ -1,35 +1,481 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 .container{
-    max-width: 90rem;
-    margin: 0 auto;
-    padding: 1rem;                                                                                                                                                                                        
+    max-width:90rem;
+    padding:1.5rem;
+    margin:0 auto;
 }
+.containersub{
+    max-width:90rem;
+    padding:1rem;
+    margin:0 auto; 
+}
+.keep__container{
+    max-width:500rem;
+    margin:0 auto;
+}
+.btn {
+      background-color: transparent;
+      padding: 0.2rem 1rem;
+      border-radius: 3rem;
+      display:inline-block;
+      border: 1px solid #2b2b2b;
+    }
+    .btn:hover {
+      background-color: hsl(240, 1.51%, 90%);
+    }
+    .btn.bg--puti {
+      background: #ffffff;
+    }
+    .btn.bg--puti:hover {
+      background-color: hsl(0,0%,50%);
+    }
+    .btn.bg--itim {
+      background: #000000;
+      color:#ffffff;
+    }
+    .btn.bg--itim:hover {
+      background-color: hsl(240, 1.51%, 20%);
+    }
+    .btn.bg--green{
+      background: #1E3932; 
+      color:#ffffff;
+      border:1px solid #ffffff;
+    }
+    .btn.bg--green:hover{
+      background-color:#006341;
+    }
+    .btn.bg--greenlight{
+      background:#006341; 
+      color:#ffffff;
+      border:1px solid #ffffff;
+    }
+    .btn.bg--greenlight:hover{
+      background-color:#1E3932;
+    }
+    .sm-mr1{
+      background:none;
+      padding:0.5rem; 
+      border-radius: 100%;
+    }
+    .sm-mr1:hover{
+      background-color:#6B6B6B;
+      border-radius: 999px;
+      transition-duration: .5s;
+    }
 
+    
 @layer components{
-
-    .starbs{
-        @apply bg-cream w-full h-[4.4rem] lg:h-[5rem] drop-shadow-lg
+    /* //HEADER */
+    .header{
+        background:#ffffff;
+        position:relative;
+        position:fixed;
+        width:100%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        z-index:9999;
     }
-    
-    .starbs .starbs__wrapper{
-        @apply  w-full items-center
-
+    .header .container{
+        @apply lg:p-[.5rem]
     }
-    .starbs .starbs__item{
-        @apply  flex justify-between lg:justify-normal
+    .header img{
+        @apply w-[2.5rem]
     }
-
-    .starbsgirl {
-        @apply  w-[2.2rem] lg:w-[3rem]
+    .branding{
+        @apply lg:flex lg:items-center
     }
-    .starbs .starbs__text{
-        @apply hidden lg:flex font-bold items-center pl-[3rem]
+    .header__wrapper{
+        @apply flex items-center justify-between
     }
-    
+    .header__actions{
+        @apply hidden lg:flex lg:gap-[1.5rem];
+    }
+    .header__nav{
+        @apply bg-puti absolute top-[5.6rem] right-[-100rem] h-[100vh] w-[75%] 
+        px-[2rem] transition-all z-[999] lg:static lg:w-fit lg:h-fit
+    }
+    .header__nav.open{
+        @apply right-[0rem] transition-all
+    }
+    .header__nav ul{
+        @apply py-[2rem] flex flex-col gap-[1.5rem] lg:flex-row
+    }
+    .header__nav ul li a{
+        @apply text-[1.5rem]  lg:text-[1.1rem]
+    }
+    .header__nav ul.nav__top{
+        @apply border-b-[1px] border-semento lg:border-none
+    }
+    .header__nav ul.nav__bottom{
+        @apply lg:hidden
+    }
+    .header__nav ul.nav__top li:hover a{
+        @apply text-lasalle
+    }
     .toggle__menu{
-        @apply p-[.5rem] space-y-[.3rem] max-w-[5rem] lg:hidden
+        @apply flex flex-col gap-[.2rem] lg:hidden
+    }
+    .toggle__menu span{
+        @apply w-[2rem] h-[.2rem] bg-semento block rounded-full
+    }
+
+    .subheader{
+        @apply bg-[#1E3932] pt-[5.5rem] relative lg:pt-[7rem]
+    }
+    .containersub{
+        @apply flex items-center justify-between
+    }
+
+    /* //OVERLAY */
+    .buhok.open{
+        @apply h-[100vh] w-[100%] bg-black absolute z-[999] top-[5.6rem] left-[0] opacity-[.5] transition-all
+    }
+    .starbs{
+        @apply bg-puti
+    }
+    .starbs__wrapper{
+        @apply bg-puti 
+    }
+    .starbs__wrapper h1{
+        @apply font-bold text-center text-[1.8rem] p-[1rem]
+    }
+    .starbs__nav{
+        @apply  rounded-md flex flex-wrap mx-auto justify-center
+    }
+    .starbs__nav li{
+        @apply font-semibold p-[1.55rem] relative text-[1.2rem]
+    }
+    .starbs__nav li:after{
+        @apply content-[''] w-full h-[3px] bg-lasalle block absolute bottom-0 left-0 w-0 origin-bottom-left ease-in-out duration-[.2s]
+    }
+    .starbs__nav li a{
+        @apply  rounded-md text-[.7rem] font-semibold w-full
+    }
+    .starbs__nav li.active:after{
+        @apply w-full ease-in duration-[.2s]
+    }
+    .starbs__desk__wrapper{
+        @apply bg-lightg h-[400px]
+    }
+    .starbs__item__content{
+        @apply p-[1.5rem] absolute top-[4rem] opacity-0 ease-in duration-300 lg:flex lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:max-w-[50rem] lg:top-[8rem] items-center text-center lg:text-justify
+    }
+    .starbs__item__content.active{
+        @apply opacity-[1] ease-in top-0 duration-[.5s]
+    }
+    .starbs__item__content img{
+        @apply w-[60rem] lg:w-[30rem] h-auto rounded-full px-[1rem]
+    }
+    .starbs__text table tr{
+        @apply h-[5rem] flex flex-col 
+    }
+    .starbs__text table tr td:first-child{
+        @apply font-semibold text-[1.5rem]
+    }
+    .starbs__text table tr td:last-child{
+        @apply font-medium  text-[.9rem]
+    }
+
+    /* //BANNER */
+
+    .banner{
+        background-image:url("../img/rewards/star.png");
+        background-size:cover;
+        background-color:#D0EAE4;
+        background-position-y:15rem;
+        background-repeat:no-repeat;
+        height:550px;
+        text-align:center;
+        @media screen and (min-width:1024px){
+            background-position-y:6rem;
+            background-size:contain;
+            background-position-x:70rem;
+            height:800px;
+            text-align:unset; 
+            display:flex;
+            align-items:center;
+        }
+    } 
+    .banner__wrapper .banner__items{
+        @apply flex flex-col gap-[2rem] justify-center
+    }  
+    .banner__wrapper h1{
+        @apply font-semibold text-[1.7rem] mx-[6rem] lg:mx-0
+    }  
+    .banner__wrapper P{
+        @apply font-semibold text-[1rem] 
+    }  
+    .banner__wrapper a{
+        @apply text-[1rem]
+    }  
+    .banner__wrapper ul span{
+        @apply hidden sm:block text-[1rem] pt-[.5rem]
+    }
+    .banner__wrapper ul span a{
+        @apply text-[1rem] w-[9rem] mx-[auto] 
     }
 }
+
+    .steps{
+        .steps__wrapper{
+            @apply flex flex-col items-center lg:p-[5rem] p-[1rem]
+        }
+        .steps__text{
+            @apply  flex items-start gap-[1rem] lg:flex-col lg:text-center lg:items-center
+        }
+        .steps__items{
+            @apply lg:grid lg:grid-cols-3
+        }
+        .steps__wrapper h1{
+            @apply font-semibold text-[1.5rem]
+        }
+        .steps__wrapper p{
+            @apply pb-[2rem]
+        }
+        .steps__wrapper .steps__text h2{
+            @apply font-bold text-[2rem] text-lasalle p-[1.5rem]
+        }
+        .steps__wrapper .stepsdl h3{
+            @apply font-semibold text-[1rem]
+        }
+        .steps__wrapper .stepsdl p{
+            @apply font-normal text-[1rem]
+        }
+    }
+
+    .extras{
+        .extras__wrapper{
+            @apply flex flex-col items-center lg:p-[5rem] p-[1rem] 
+        }
+        .extras__text{
+            @apply  flex items-start gap-[1rem] lg:flex-col lg:text-center lg:items-center
+        }
+        .extras__items{
+            @apply lg:grid lg:grid-cols-3 lg:w-[80rem]
+        }
+        .extras__wrapper h1{
+            @apply font-semibold text-[1.5rem] lg:text-[1.8rem]
+        }
+        .extras__wrapper .par2{
+            @apply pb-[3rem] pt-[1rem] lg:w-[42rem] text-center
+        }
+        .extras__wrapper .extrasdl{
+            @apply p-[1rem]
+        }
+        .extras__wrapper .extras__text img{
+            @apply p-[.5rem] max-w-[8rem]
+        }
+        .extras__wrapper .extrasdl h3{
+            @apply font-semibold text-[1.5rem]  
+        }
+        .extras__wrapper .extrasdl p{
+            @apply font-normal text-[1rem] p-[1rem]
+        }
+        .extras__wrapper .extrasdl a{
+            @apply font-semibold text-[1rem] underline hover:no-underline text-lasalle
+        }
+       
+    } 
+
+    
+        .earn__wrapper{
+            @apply bg-putik flex flex-col  items-center p-[1rem] 
+        }
+        .earn__text{
+            @apply  flex items-start gap-[1rem] lg:flex text-left
+        }
+        .earn__items{
+            @apply p-[2rem] lg:w-[80rem] lg:flex 
+        } 
+        .earn__items:not(:last-child){
+            @apply border-b-[1px] border-semento
+        } 
+        .earn__wrapper h1{
+            @apply font-semibold text-[1.8rem] pt-[3rem] lg:text-[1.8rem]
+        }
+        .earn__wrapper .p3{
+            @apply text-[1rem] pb-[3rem] lg:pb-0 pt-[1rem] lg:w-[42rem] text-center
+        }
+        .earn__wrapper .earndl{
+            @apply p-[1rem]
+        }
+        .earn__wrapper .earn__items h2{
+            @apply font-semibold text-[1.1rem] w-[10rem]  
+        }
+        .earn__wrapper .earn__items .p4{
+            @apply pb-[1.5rem]  
+        }
+        .earn__wrapper .earn__text img{
+            @apply p-[.5rem] max-w-[8rem]
+        }
+        .earn__wrapper .earndl h3{
+            @apply font-semibold text-[1.5rem] pb-[.5rem] max-w-[20rem]
+        }
+        .earn__wrapper .earndl p{
+            @apply font-normal text-[1rem] max-w-[20rem]
+        }
+        .earn__wrapper .earndl a{
+            @apply font-semibold text-[1rem] underline hover:no-underline text-lasalle
+        }
+
+
+    
+    .keep{
+        @apply bg-lightg lg:bg-swirl lg:bg-cover p-[2rem]
+    }  
+    .keep__container{
+        @apply bg-lightg lg:h-[60vh] lg:flex lg:justify-center
+    }
+    .keep__wrapper{
+        @apply flex flex-col justify-center
+    }
+    .keep__items{
+        @apply items-center text-center
+    }
+    .keep__items h1{
+        @apply font-bold text-[1.5rem] p-[1rem] max-w-[25rem] lg:max-w-[40rem] mx-auto lg:text-[2rem]
+    }
+    .keep__items p{
+        @apply text-[1rem] p-[1rem] max-w-[40rem] mx-auto
+    }
+    .keep .starst{
+        @apply flex justify-start lg:hidden 
+    }
+    .keep .starsb{
+        @apply flex justify-end lg:hidden
+    }
+    .keep__container .starst1{
+        @apply hidden max-w-[20rem] lg:flex p-[2rem]
+    }
+    .keep__container .starsb1{
+        @apply hidden max-w-[20rem] lg:flex p-[2rem]
+    }
+    .keep__text img{
+        @apply mx-auto max-w-[14rem] p-[2rem]
+    }
+    .keep__text p a{
+        @apply text-lasalle hover:no-underline 
+    }
+    .keep__text .btn{
+        @apply p-[.2rem]
+    }
+
+    .quest{
+        @apply flex-col lg:p-[5rem]
+    }
+    .quest__wrapper{
+        @apply text-left pt-[2rem] pb-[2rem] lg:pl-[10rem]
+    }
+    .quest__wrapper h1{
+        @apply text-[1.5rem] font-bold p-[.5rem] lg:text-[2rem]
+    }
+    .quest__wrapper p{
+        @apply p-[.5rem] lg:max-w-[45rem]
+    }
+
+    /* //Restric */
+
+    .restric{
+        @apply bg-putik 
+    }
+    .restric__wrapper{
+        @apply bg-putik flex flex-col p-[1rem] 
+    }
+    .restric__text{
+        @apply  flex lg:flex-col text-left lg:pt-[1rem] max-w-[40rem]
+    }
+    .restric__bar{
+        @apply lg:flex lg:flex-col
+    }
+    .restric__items{
+        @apply lg:flex lg:flex-row 
+    }
+    .restric__wrapper h1{
+        @apply text-[1rem] pt-[1rem]
+    }
+    .restric__text h2{
+        @apply text-gray-500 font-semibold text-[1rem] pt-[2rem]
+    }
+    .restric__wrapper .p3{
+        @apply text-[1rem] pt-[1rem]
+    }
+    .restric__text .p3{
+        @apply text-[1rem] pt-[1rem]
+    }
+    .p3 a{
+        @apply underline text-lasalle hover:no-underline
+    }
+    .restric__wrapper .restric__items .p4{
+        @apply pb-[1.5rem]  
+    }
+    .restric__wrapper .restricdl p{
+        @apply font-normal text-[1rem]
+    }
+
+/* //dropdown */
+
+.dropdown{
+    @apply p-[1rem] mt-[3rem] border-t-[2px] border-gray-200
+}
+.dropdown__wrapper{
+    @apply border-b-[2px] border-gray-200
+}
+.nav{
+    @apply flex flex-col lg:flex-row  mt-[1rem] lg:gap-[3rem]
+} 
+.nav li{
+    @apply p-[.5rem] 
+}
+.nav a{
+    @apply text-[1rem] text-maitim font-medium font-[1rem] flex items-center justify-between
+}
+.dropdown .dropdown__nav i{
+    @apply p-[1rem] text-maitim ease-in duration-300 lg:hidden
+}
+.dropdown .dropdown__nav i.open{
+    @apply p-[1rem] text-maitim ease-in duration-300 rotate-[90deg]
+}
+.dropdown__nav ul.drop{
+    @apply bg-puti lg:max-w-[15rem] max-h-[0rem] lg:max-h-[50rem] overflow-hidden ease-in duration-300
+}
+.dropdown__nav ul.drop li a{
+    @apply text-[1rem] text-gray-500 hover:text-gray-700 font-medium pt-[1rem] 
+}
+.dropdown__nav ul.drop.open{
+    @apply max-h-[50rem] ease-in duration-300
+}
+
+/* //Footer */
+
+.socials{
+    @apply p-[1rem]
+}
+.socials .sm-mr1{
+    @apply p-[0.5rem]
+}
+.socials__text{
+    @apply p-[1rem]
+}
+.socials .socials__rules__links{
+    @apply flex align-middle text-center pt-[1rem] gap-[1rem] pr-[1rem]
+}
+.socials__items p{
+    @apply text-gray-400 font-semibold  p-[1rem] mb-[8rem]
+}
+.socials__rules__links span{
+    @apply hidden lg:flex 
+}
+.socials__rules span{
+    @apply border-r-[1.5px] border-gray-800 
+}
+.socials__rules__links a{
+    @apply underline hover:no-underline font-semibold
+}
+
+
+    
+    
+
+
+    
